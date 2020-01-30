@@ -3,6 +3,10 @@
 Small wrapper so that Modals are queued up. Helps with an issue on react-native IOS that stops the second modal appearing
 
 ```
+npm i -s react-native-modal-queue
+```
+
+```
 import Modal, {QueueProvider} from 'react-native-modal-queue';
 
 
