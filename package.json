@@ -1,0 +1,22 @@
+{
+  "name": "react-native-modal-queue",
+  "version": "1.0.0",
+  "description": "Queue system to workaround the limiations of react-native-modal only allowing one modal to appear",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jberns88/react-native-modal-queue.git"
+  },
+  "keywords": [
+    "react-native-modal"
+  ],
+  "author": "Jay Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jberns88/react-native-modal-queue/issues"
+  },
+  "homepage": "https://github.com/jberns88/react-native-modal-queue#readme"
+}
