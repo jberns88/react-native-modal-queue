@@ -31,7 +31,7 @@ const WrappedModal = (props) => {
 
         unregister(ref.current);
         ref.current = false;
-    }, []);
+    }, [onModalHide]);
 
 
     if (!current || !ref || current !== ref.current) {
