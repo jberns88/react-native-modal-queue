@@ -1,4 +1,5 @@
 import React, {useContext, useRef, useMemo, useEffect, useCallback} from 'react';
+import {Platform} from 'react-native';
 import Modal from 'react-native-modal';
 
 import Context from './context';
@@ -22,7 +23,12 @@ const WrappedModal = (props) => {
         }
     }, [isVisible]);
 
-    useEffect(() => () => ref.current && unregister(ref.current), []);
+    useEffect(() => () => {
+            if (ref.current) {
+                // Can't see any other way. There is no feedback when it's unmounted this way so we just have to wait, guess and hope it's gone.
+                setTimeout(() => unregister(ref.current), 100);
+            }
+        }, []);
 
     const wrappedOnModalHide = useCallback((...args) => {
         if (onModalHide) {
