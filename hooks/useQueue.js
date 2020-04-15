@@ -30,7 +30,7 @@ export default () => {
         }, 0);
     }, []);
 
-    const current = stack[0] ? stack[0] : false;
+    const current = stack && stack[0] ? stack[0] : false;
 
     return useMemo(() => ({register, unregister, current}), [register, unregister, current])
 }
