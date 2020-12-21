@@ -1,5 +1,13 @@
 import {useMemo, useState, useCallback} from 'react';
 
+function isIterable(obj) {
+    // checks for null and undefined
+    if (obj == null) {
+        return false;
+    }
+    return typeof obj[Symbol.iterator] === 'function';
+};
+
 export default () => {
     const [stack, setStack] = useState([]);
 
@@ -8,9 +16,12 @@ export default () => {
 
         setTimeout(() => {
             setStack(fresh => {
-                const newStack = [...fresh];
-                newStack.push(id);
-                return newStack;
+                if (isIterable(fresh)) {
+                    const newStack = [...fresh];
+                    newStack.push(id);
+                    return newStack;
+                }
+                return fresh;
             });
         }, 0);
 
@@ -26,11 +37,12 @@ export default () => {
                     newStack.splice(index, 1);
                     return newStack;
                 }
+                return fresh;
             });
         }, 0);
     }, []);
 
-    const current = stack[0] ? stack[0] : false;
+    const current = stack && stack[0] ? stack[0] : false;
 
     return useMemo(() => ({register, unregister, current}), [register, unregister, current])
 }
